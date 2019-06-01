@@ -30,12 +30,10 @@ import java.util.List;
 import static com.example.notes.EditNoteActivity.NOTE_EXTRA_KEY;
 
 public class MainActivity extends AppCompatActivity implements NoteEventListener {
-
     private RecyclerView recyclerView;
     private ArrayList<Note> notes;
     private NotesAdapters adapter;
     private NotesDao dao;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,8 +59,7 @@ public class MainActivity extends AppCompatActivity implements NoteEventListener
 
     public void loadNotes(){
         this.notes = new ArrayList<>();
-        List<Note> list = dao.getNotes();
-        this.notes.addAll(list);
+        this.notes.addAll(dao.getNotes());
         this.adapter = new NotesAdapters(this, this.notes);
         this.recyclerView.setAdapter(adapter);
         this.adapter.setListener(this);

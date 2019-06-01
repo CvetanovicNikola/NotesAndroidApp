@@ -13,14 +13,10 @@ import com.example.notes.model.Note;
 import java.util.Date;
 
 public class EditNoteActivity extends AppCompatActivity {
-
-
-
     private EditText inputNote;
     private NotesDao dao;
     private Note temp;
     public static final String NOTE_EXTRA_KEY = "note_id";
-
 
 
     @Override
@@ -38,6 +34,7 @@ public class EditNoteActivity extends AppCompatActivity {
             temp = new Note();
         }
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu){
         getMenuInflater().inflate(R.menu.edit_note_menu, menu);
@@ -53,13 +50,12 @@ public class EditNoteActivity extends AppCompatActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
     private void onSaveNote(){
 
         String text = inputNote.getText().toString();
         if(!text.isEmpty()){
             long date = new Date().getTime();
-            Note note = new Note(text, date);
-            dao.insertNote(note);
             if(temp == null){
                temp = new Note(text,date);
                 dao.insertNote(temp);
